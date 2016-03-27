@@ -54,7 +54,7 @@ class AudioClip(object):
                 % (self._alias, start_ms, end_ms) )
 
     def isplaying(self):
-        return self._mode() == 'playing'
+        return self._mode() == b'playing'
 
     def _mode(self):
         err, buf = self._mci.directsend('status %s mode' % self._alias)
@@ -67,7 +67,7 @@ class AudioClip(object):
         self._mci.directsend('resume %s' % self._alias)
 
     def ispaused(self):
-        return self._mode() == 'paused'
+        return self._mode() == b'paused'
 
     def stop(self):
         self._mci.directsend('stop %s' % self._alias)
